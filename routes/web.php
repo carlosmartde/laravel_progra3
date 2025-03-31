@@ -27,3 +27,5 @@ Route::resource('camiones', CamionController::class, ['parameters' => [
 ]]);
 
 Route::get('camiones/eliminar/{id}', 'CamionController@eliminarCamion')->name('camiones.eliminar');
+Route::resource('camiones', CamionController::class);
+

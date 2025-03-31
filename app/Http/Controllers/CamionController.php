@@ -46,7 +46,7 @@ class CamionController extends Controller
     public function update(Request $request, Camion $camion)
     {
         $request->validate([
-            'placa' => 'required|string|max:10|unique:camiones,placa,'.$camion->id_camion.',id_camion',
+            'placa' => 'required|string|max:10|unique:camion,placa,'.$camion->id_camion.',id_camion',
             'modelo' => 'required|string|max:50',
             'id_marca' => 'required|exists:marcas,id_marca',
             'id_transporte' => 'required|exists:transportes,id_transporte',
@@ -58,13 +58,10 @@ class CamionController extends Controller
         return redirect()->route('camiones.index')->with('success', 'Camión actualizado correctamente.');
     }
 
-    public function destroy(Camion $camion)
+    public function destroy($id)
 {
-    try {
-        $camion->delete();
-        return redirect()->route('camiones.index')->with('success', 'Camión eliminado correctamente.');
-    } catch (\Exception $e) {
-        return redirect()->route('camiones.index')->with('error', 'No se pudo eliminar el camión: ' . $e->getMessage());
-    }
+    $camion = Camion::findOrFail($id);
+    $camion->delete();
+    return redirect()->route('camiones.index')->with('success', 'Camión eliminado correctamente.');
 }
 }

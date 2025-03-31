@@ -45,7 +45,7 @@
                             </a></li>
                         <li>
                              <a class="dropdown-item" href="{{ route('camiones.index') }}">
-                                <i class="fas fa-shopping-cart"></i> Camiones
+                                <i class="fas fa-truck"></i> Camiones
                              </a></li>
                     </ul>
                 </li>
