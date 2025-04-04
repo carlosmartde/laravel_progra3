@@ -19,9 +19,9 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="modelo" class="form-label">Modelo</label>
-                                <input type="text" class="form-control @error('modelo') is-invalid @enderror" id="modelo" name="modelo" value="{{ old('modelo') }}" required>
-                                @error('modelo')
+                                <label for="codig_interno" class="form-label">Código Interno</label>
+                                <input type="text" class="form-control @error('codig_interno') is-invalid @enderror" id="codig_interno" name="codig_interno" value="{{ old('codig_interno') }}" required>
+                                @error('codig_interno')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -54,9 +54,23 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="capacidad" class="form-label">Capacidad (toneladas)</label>
-                                <input type="number" step="0.01" class="form-control @error('capacidad') is-invalid @enderror" id="capacidad" name="capacidad" value="{{ old('capacidad') }}" required>
-                                @error('capacidad')
+                                <label for="color" class="form-label">Color</label>
+                                <input type="text" class="form-control @error('color') is-invalid @enderror" id="color" name="color" value="{{ old('color') }}">
+                                @error('color')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="modelo" class="form-label">Modelo</label>
+                                <input type="date" class="form-control @error('modelo') is-invalid @enderror" id="modelo" name="modelo" value="{{ old('modelo') }}">
+                                @error('modelo')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="capacidad_toneladas" class="form-label">Capacidad (toneladas)</label>
+                                <input type="number" step="0.01" class="form-control @error('capacidad_toneladas') is-invalid @enderror" id="capacidad_toneladas" name="capacidad_toneladas" value="{{ old('capacidad_toneladas') }}">
+                                @error('capacidad_toneladas')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>

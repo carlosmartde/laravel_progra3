@@ -20,6 +20,34 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
+                                <label for="codig_interno" class="form-label">Codigo Interno</label>
+                                <input type="text" class="form-control @error('codig_interno') is-invalid @enderror" id="codig_interno" name="codig_interno" value="{{ old('codig_interno', $camion->codig_interno) }}" required>
+                                @error('codig_interno')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_transporte" class="form-label">Transporte</label>
+                                <select class="form-select @error('id_transporte') is-invalid @enderror" id="id_transporte" name="id_transporte" required>
+                                    <option value="">Seleccione un transporte</option>
+                                    @foreach ($transportes as $transporte)
+                                        <option value="{{ $transporte->id_transporte }}" {{ old('id_transporte', $camion->id_transporte) == $transporte->id_transporte ? 'selected' : '' }}>
+                                            {{ $transporte->nombre }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('id_transporte')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="color" class="form-label">Color</label>
+                                <input type="text" class="form-control @error('color') is-invalid @enderror" id="color" name="color" value="{{ old('color', $camion->color) }}" required>
+                                @error('color')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
                                 <label for="modelo" class="form-label">Modelo</label>
                                 <input type="text" class="form-control @error('modelo') is-invalid @enderror" id="modelo" name="modelo" value="{{ old('modelo', $camion->modelo) }}" required>
                                 @error('modelo')
@@ -40,24 +68,11 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+                            
                             <div class="mb-3">
-                                <label for="id_transporte" class="form-label">Transporte</label>
-                                <select class="form-select @error('id_transporte') is-invalid @enderror" id="id_transporte" name="id_transporte" required>
-                                    <option value="">Seleccione un transporte</option>
-                                    @foreach ($transportes as $transporte)
-                                        <option value="{{ $transporte->id_transporte }}" {{ old('id_transporte', $camion->id_transporte) == $transporte->id_transporte ? 'selected' : '' }}>
-                                            {{ $transporte->nombre }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                @error('id_transporte')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="capacidad" class="form-label">Capacidad (toneladas)</label>
-                                <input type="number" step="0.01" class="form-control @error('capacidad') is-invalid @enderror" id="capacidad" name="capacidad" value="{{ old('capacidad', $camion->capacidad) }}" required>
-                                @error('capacidad')
+                                <label for="capacidad_toneladas" class="form-label">Capacidad (toneladas)</label>
+                                <input type="number" step="0.01" class="form-control @error('capacidad_toneladas') is-invalid @enderror" id="capacidad_toneladas" name="capacidad_toneladas" value="{{ old('capacidad_toneladas', $camion->capacidad_toneladas) }}" required>
+                                @error('capacidad_toneladas')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>

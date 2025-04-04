@@ -24,11 +24,13 @@ class CamionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'placa' => 'required|string|max:10|unique:camiones',
+            'placa' => 'required|string|max:10|unique:camion',
+            'codig_interno' => 'required|string|max:8',
             'modelo' => 'required|string|max:50',
-            'id_marca' => 'required|exists:marcas,id_marca',
-            'id_transporte' => 'required|exists:transportes,id_transporte',
-            'capacidad' => 'required|numeric|min:0',
+            'id_marca' => 'required|exists:marca,id_marca',
+            'id_transporte' => 'required|exists:transporte,id_transporte',
+            'capacidad_toneladas' => 'required|numeric|min:0',
+            'color' => 'required|string|max:35',
         ]);
 
         Camion::create($request->all());
@@ -47,10 +49,12 @@ class CamionController extends Controller
     {
         $request->validate([
             'placa' => 'required|string|max:10|unique:camion,placa,'.$camion->id_camion.',id_camion',
+            'codig_interno' => 'required|string|max:8',
             'modelo' => 'required|string|max:50',
-            'id_marca' => 'required|exists:marcas,id_marca',
-            'id_transporte' => 'required|exists:transportes,id_transporte',
-            'capacidad' => 'required|numeric|min:0',
+            'id_marca' => 'required|exists:marca,id_marca',
+            'id_transporte' => 'required|exists:transporte,id_transporte',
+            'capacidad_toneladas' => 'required|numeric|min:0',
+            'color' => 'required|string|max:35',
         ]);
 
         $camion->update($request->all());
@@ -59,9 +63,9 @@ class CamionController extends Controller
     }
 
     public function destroy($id)
-{
-    $camion = Camion::findOrFail($id);
-    $camion->delete();
-    return redirect()->route('camiones.index')->with('success', 'Camión eliminado correctamente.');
-}
+    {
+        $camion = Camion::findOrFail($id);
+        $camion->delete();
+        return redirect()->route('camiones.index')->with('success', 'Camión eliminado correctamente.');
+    }
 }

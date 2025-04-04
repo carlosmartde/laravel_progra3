@@ -16,15 +16,19 @@ class CamionFactory extends Factory
         $colores = ['Rojo', 'Azul', 'Blanco', 'Negro', 'Gris', 'Verde', 'Amarillo'];
         
         return [
-            'placa' => $this->faker->regexify('[A-Z]{3}[0-9]{3}'),
-            'codig_interno' => $this->faker->regexify('[A-Z]{2}[0-9]{4}'),
-            'id_transporte' => Transporte::factory(),
+            'placa' => $this->faker->unique()->regexify('[A-Z]{3}[0-9]{3}'),
+            'codig_interno' => $this->faker->unique()->regexify('[A-Z]{2}[0-9]{4}'),
+            'id_transporte' => function() {
+                return Transporte::inRandomOrder()->first()->id_transporte ?? 1;
+            },
             'color' => $this->faker->randomElement($colores),
             'modelo' => $this->faker->date('Y-m-d', '-5 years'),
-            'capacidad_toneladas' => $this->faker->numberBetween(5, 40) . ' T',
-            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'updated_at' => $this->faker->dateTimeBetween('-6 months', 'now'),
-            'id_marca' => Marca::factory(),
+            'capacidad_toneladas' => $this->faker->numberBetween(5, 40),
+            'created_at' => now(),
+            'updated_at' => now(),
+            'id_marca' => function() {
+                return Marca::inRandomOrder()->first()->id_marca ?? 1;
+            },
         ];
     }
 }
