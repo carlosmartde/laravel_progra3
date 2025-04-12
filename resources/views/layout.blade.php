@@ -31,24 +31,29 @@
                         <i class="fas fa-chart-line"></i>
                             Reportes</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-store"></i> Inventario
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">
-                                <i class="fas fa-shopping-bag"></i> Marcas
-                            </a></li>
-                        <li>
-                            <a class="dropdown-item" href="{{ route('productos.index') }}">
-                                <i class="fas fa-shopping-cart"></i> Produtos
-                            </a></li>
-                        <li>
-                             <a class="dropdown-item" href="{{ route('camiones.index') }}">
-                                <i class="fas fa-truck"></i> Camiones
-                             </a></li>
-                    </ul>
-                </li>
+                <!-- Reemplaza la sección de Inventario en el navbar -->
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-store"></i> Inventario
+    </a>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="{{ route('marcas.index') }}">
+                <i class="fas fa-tag"></i> Marcas
+            </a></li>
+        <li>
+            <a class="dropdown-item" href="{{ route('transportes.index') }}">
+                <i class="fas fa-truck-moving"></i> Transportes
+            </a></li>
+        <li>
+            <a class="dropdown-item" href="{{ route('productos.index') }}">
+                <i class="fas fa-shopping-cart"></i> Produtos
+            </a></li>
+        <li>
+             <a class="dropdown-item" href="{{ route('camiones.index') }}">
+                <i class="fas fa-truck"></i> Camiones
+             </a></li>
+    </ul>
+</li>
             </ul>
         </div>
     </div>
